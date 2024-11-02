@@ -44,12 +44,12 @@ Clauses:
   - Too annoying to figure out the number of new clauses or auxiliary variables beforehand
 
 Variable Mapping to DIMACS
-- a_{i, j, k} is variable number n*i + j
+- a_{i, j} is variable number n*i + j + 1
 - E.g. the order goes
-  a_{0, 1}  a_{0, 2} ... a_{0, n}
-  a_{1, 1}  a_{1, 2} ... a_{1, n}
+  a_{0, 0}  a_{0, 1} ... a_{0, n-1}
+  a_{1, 0}  a_{1, 1} ... a_{1, n-1}
   ...
-  a_{n-1, 1}  a_{n-1, 2} ... a_{n-1, n}
+  a_{n-1, 0}  a_{n-1, 1} ... a_{n-1, n-1}
 - Everything else is assigned during runtime
  */
 
@@ -191,8 +191,10 @@ int main (int argc, char** argv) {
     }
 
     if (n <= 2){
+        // used direct encoding of AtMostOne
         clause_counter += 2*n*n;
     } else {
+        // used linear encoding of AtMostOne
         clause_counter += 2*n*(3*n - 5);
     }
 
@@ -205,10 +207,10 @@ int main (int argc, char** argv) {
                 continue;
             }
 
-            int lbi = 0;                //lower bound on the possible x-coordinates of the starting point
-            int upi = n-x;              //upper bound on the possible x-coordinates of the starting point
-            int lbj = max(0, -y);       //lower bound on the possible y-coordinates of the starting point
-            int upj = min(n, n-y);      //upper bound on the possible y-coordinates of the starting point
+            int lbi = 0;                //lower bound on the possible row indices of the starting point
+            int upi = n-x;              //upper bound on the possible row indices of the starting point
+            int lbj = max(0, -y);       //lower bound on the possible col indices of the starting point
+            int upj = min(n, n-y);      //upper bound on the possible col indices of the starting point
             int num = (upi - lbi)*(upj - lbj);      //total number of vectors with this direction
 
             // cout << "\nx y: " << x << ", " << y << "\n";
