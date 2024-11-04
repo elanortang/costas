@@ -110,6 +110,8 @@ int main(int argc, char* argv[]) {
         // Use a stringstream to parse numbers from the line
         std::stringstream ss(line);
         int number;
+        char v;
+        ss >> v;
         while (ss >> number) {
             numbers.push_back(number);
         }
