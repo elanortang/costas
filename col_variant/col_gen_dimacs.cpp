@@ -121,9 +121,9 @@ int main (int argc, char** argv) {
     // Each direction (x, y) appears at most once, among all vectors with that direction
     // To avoid double-counting vectors, the x direction of the vector is non-negative,
     // and if the x direction is 0, the y direction is non-negative. Normally y starts at -(n-1).
-    for (int x = 0; x < n; ++x) {
+    for (int x = 1; x < n; ++x) {
         for (int y = -(n-1); y < n; ++y) {
-            if (x == 0 && y <= 0) {
+            if (y == 0) {
                 continue;
             }
 
