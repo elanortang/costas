@@ -5,8 +5,8 @@ costas="/Users/rosesilv/Desktop/costas"
 scranfilize="/Users/rosesilv/Desktop/scranfilize-master/scranfilize"
 
 #TODO: choose your encoding and update 
-encoding_program="$costas/ord_variant/ord_gen_dimacs"
-encoding="ord" #for file naming
+encoding_program="$costas/col_variant/col_gen_dimacs"
+encoding="col" #for file naming
 
 #TODO: Double check scranfilize options
 options="-c 1 -v 1 -f 0 --force"
