@@ -3,7 +3,7 @@ import numpy as np
 import csv
 
 # Specify the path to your CSV file
-file_path = "displacement-frequencies-24.csv"
+file_path = "vec_freqs_24.csv"
 
 # Initialize a set to store the data
 data_set = set()
@@ -15,6 +15,8 @@ with open(file_path, mode="r") as file:
     
     # Add each row as a tuple to the set
     for row in csv_reader:
+        if row[-1] == '':
+            row = row[:-1]
         int_row = tuple(map(int, row))
         data_set.add(int_row)
 
@@ -27,6 +29,6 @@ sc = plt.scatter(x, y, c=values, cmap="viridis", s=200, edgecolor="k")
 plt.colorbar(sc, label="Value")
 plt.xlabel("X")
 plt.ylabel("Y")
-plt.title("Scatter Plot with Color-Mapped Values")
+plt.title("Displacement Vectors Frequencies for n=24")
 plt.grid(True)
 plt.show()
