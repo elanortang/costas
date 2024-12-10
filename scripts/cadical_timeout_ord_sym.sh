@@ -121,12 +121,12 @@ run () {
             mv $scrambled_cnf "${path_to_output}/${cnf_dir}/unsat_${filename}$i.cnf"
             mv $sat_output "${path_to_output}/${output_dir}/unsat_${filename}$i.sat"
             # The 1 means that this experiment was unsat. We expect {num_successes} to be 0
-            echo "${x}, ${y}, ${num_successes},1," >> $successes_csv
+            echo "${x}, ${y}, ${kind}, ${num_successes},1," >> $successes_csv
             break
         fi
     done
     # The 0 means that this experiment was not unsat
-    echo "${x}, ${y}, ${num_successes},0," >> $successes_csv
+    echo "${x}, ${y}, ${kind}, ${num_successes},0," >> $successes_csv
 }
 
 # BEGIN ACTUALLY RUNNING COMMANDS
@@ -141,7 +141,7 @@ if [ ! -d $sym_cnfs ]; then
 fi
 
 touch $successes_csv
-echo "x, y, num successes, unsat?," >> $successes_csv
+echo "x, y, kind, num successes, unsat?," >> $successes_csv
 
 # Generate symmetry DIMACS constraints
 clang++ $costas/src/gen_sym.cpp -o gen_sym
