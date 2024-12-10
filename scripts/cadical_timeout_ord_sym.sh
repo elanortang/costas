@@ -95,6 +95,7 @@ run () {
 
     # Generate scranfilize tests and run cadical on them
     num_successes=0
+    is_unsat=false
     for i in {1..100}
     do
         scrambled_cnf="${path_to_output}/${cnf_dir}/${filename}$i.cnf"
@@ -114,19 +115,17 @@ run () {
             rm $scrambled_cnf
             rm $sat_output
         
-        # If cadical returned UNSAT, add "unsat_" prefix to filenames, write results of this 
-        # experiment to {successes_csv}, and break the loop. (Any scramble of these constraints
-        # will also be UNSAT, so no point in continuing.)
+        # If cadical returned UNSAT, add "unsat_" prefix to filenames and break the loop. 
+        # (Any scramble of these constraints will also be UNSAT, so no point in continuing.)
         elif [ "$(tail -n 1 $sat_output)" = "c exit 20" ]; then
             mv $scrambled_cnf "${path_to_output}/${cnf_dir}/unsat_${filename}$i.cnf"
             mv $sat_output "${path_to_output}/${output_dir}/unsat_${filename}$i.sat"
-            # The 1 means that this experiment was unsat. We expect {num_successes} to be 0
-            echo "${x}, ${y}, ${kind}, ${num_successes},1," >> $successes_csv
+            is_unsat=true
             break
         fi
     done
     # The 0 means that this experiment was not unsat
-    echo "${x}, ${y}, ${kind}, ${num_successes},0," >> $successes_csv
+    echo "${x}, ${y}, ${kind}, ${num_successes},${is_unsat}," >> $successes_csv
 }
 
 # BEGIN ACTUALLY RUNNING COMMANDS
@@ -140,6 +139,7 @@ if [ ! -d $sym_cnfs ]; then
     mkdir -p $sym_cnfs
 fi
 
+rm $successes_csv
 touch $successes_csv
 echo "x, y, kind, num successes, unsat?," >> $successes_csv
 
