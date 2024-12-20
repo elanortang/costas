@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     for (int x = 0; x <= 4; x += 2) {
         for (int y = 0; y <= 2; ++y) {
             ostringstream ss;
-            ss << path << "/sym_n" << n << "_x" << x << "_y" << y << "_top.cnf";
+            ss << path << "/sym_n" << n << "_x" << x << "y" << y << "_top.cnf";
             ofstream cnf(ss.str());
             for (int i = 0; i <= n - 1 - x; ++i) {
                 for (int j = 0; j <= n/2 - 1 - y; ++j) {
@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
                 continue;
             }
             ostringstream ss;
-            ss << path << "/sym_n" << n << "_x" << x << "_y" << y << "_edge.cnf";
+            ss << path << "/sym_n" << n << "_x" << x << "y" << y << "_edge.cnf";
             ofstream cnf(ss.str());
             for (int i = 0; i <= n - 1 - x; ++i) {
                 for (int j = y; j <= n/2 - 1; ++j) {
