@@ -1,0 +1,132 @@
+c --- [ banner ] -------------------------------------------------------------
+c 
+c CaDiCaL SAT Solver
+c Copyright (c) 2016-2024 A. Biere, M. Fleury, N. Froleyks, K. Fazekas, F. Pollitt
+c 
+c Version 2.0.0 edad56f5b71ff7502a09786cb00df09c3b889317
+c Apple clang version 15.0.0 (clang-1500.3.9.4) -Wall -Wextra -O3 -DNDEBUG -std=c++11
+c Mon Sep 16 09:48:21 EDT 2024 Darwin GS24452.SP.CS.CMU.EDU 23.6.0 arm64
+c 
+c --- [ limit ] --------------------------------------------------------------
+c 
+c setting time limit to 10 seconds real time (due to '-t 10')
+c 
+c --- [ parsing input ] ------------------------------------------------------
+c 
+c reading DIMACS file from '/Users/estang/SAT/costas/scranfilize_tests/col/n=24/freq23/elanor_cnf/24x24_col_scran311.cnf'
+c opening file to read '/Users/estang/SAT/costas/scranfilize_tests/col/n=24/freq23/elanor_cnf/24x24_col_scran311.cnf'
+c found 'p cnf 13752 306906' header
+c parsed 306906 clauses in 0.04 seconds process time
+c 
+c --- [ options ] ------------------------------------------------------------
+c 
+c all options are set to their default value
+c 
+c --- [ solving ] ------------------------------------------------------------
+c 
+c time measured in process time since initialization
+c 
+c  seconds  reductions  redundant  irredundant
+c         MB    restarts       trail       variables
+c          level   conflicts       glue         remaining
+c 
+c *  0.04  0  0 0   0    0    0  0% 0 272909 13708 100%
+c {  0.05  0  0 0   0    0    0  0% 0 272909 13708 100%
+c -  0.08  0 390 1   4  301  281 25% 24 264622 13708 100%
+c }  0.11  0 137 1   4 1000  914 18% 19 264622 13708 100%
+c [  0.11  0  0 1   4 1000  914  0% 0 264622 13708 100%
+c O  0.11  0 30 1   4 1004  917 16% 18 264622 13708 100%
+c -  0.15  0 19 2   4 1155  838 16% 15 264622 13708 100%
+c -  0.22  0 22 3   5 2438 1275 16% 17 264622 13708 100%
+c ]  0.25  0 21 3   5 3000 1718 16% 17 264622 13708 100%
+c {  0.25  0 137 3   5 3000 1718 18% 19 264622 13708 100%
+c F  0.25  0 136 3   5 3006 1724 18% 19 264622 13708 100%
+c -  0.32  0 76 4  12 4145 1820 17% 18 264622 13708 100%
+c #  0.49  0 50 4  17 6007 3339 16% 16 264622 13708 100%
+c -  0.52  0 48 5  22 6278 2256 16% 16 264622 13708 100%
+c }  0.55  0 43 5  22 7000 2785 16% 16 264622 13708 100%
+c [  0.55  0 21 5  22 7000 2785 16% 17 264622 13708 100%
+c e  0.79  0 24 5  23 8632 4076 15% 17 253330 11970 87%
+c ^  0.84  0 24 5  23 8632 4076 15% 17 253330 11970 87%
+c -  0.90  0 24 6  23 8839 2655 16% 17 253330 11970 87%
+c I  0.95  0 26 6  24 10011 3578 15% 18 253330 11970 87%
+c 
+c  seconds  reductions   redundant   irredundant
+c         MB    restarts        trail        variables
+c          level    conflicts       glue          remaining
+c 
+c -  1.04  0 33 7  26 11786 3349 16% 20 253330 11970 87%
+c ]  1.17  0 34 7  27 15000 6123 16% 20 253330 11970 87%
+c {  1.17  0 43 7  27 15000 6123 18% 16 253330 11970 87%
+c B  1.24  0 43 7  27 15012 6132 18% 16 253330 11970 87%
+c -  1.26  0 43 8  35 15155 3965 18% 16 253330 11970 87%
+c -  1.40  0 33 9  57 18944 4299 17% 15 253330 11970 87%
+c W  1.49  0 30 9  70 21013 5744 17% 15 253330 11970 87%
+c -  1.59  0 29 10  94 23157 4573 17% 15 253330 11970 87%
+c s  1.76  0 27 10 116 26247 6869 17% 15 253330 11970 87%
+c e  1.88  0 27 10 116 26247 6797 17% 15 253472 11828 86%
+c s  1.90  0 27 10 116 26247 6770 17% 15 253050 11828 86%
+c -  1.99  0 26 11 124 27789 4966 16% 15 253050 11828 86%
+c 
+c caught signal 2 (SIGINT)
+c 
+c --- [ result ] -------------------------------------------------------------
+c 
+c UNKNOWN
+c 
+c --- [ run-time profiling ] -------------------------------------------------
+c 
+c process time taken by individual solving procedures
+c (percentage relative to process time for solving)
+c 
+c         1.41   71.72% search
+c         0.82   41.97% unstable
+c         0.56   28.50% stable
+c         0.56   28.28% simplify
+c         0.16    8.10% vivify
+c         0.12    6.26% subsume
+c         0.11    5.48% elim
+c         0.07    3.55% ternary
+c         0.04    2.20% parse
+c         0.04    2.16% probe
+c         0.02    0.99% walk
+c         0.00    0.24% lucky
+c   =================================
+c         1.96   97.84% solve
+c 
+c last line shows process time for solving
+c (percentage relative to total process time)
+c 
+c --- [ statistics ] ---------------------------------------------------------
+c 
+c chronological:              7382        26.35 %  of conflicts
+c conflicts:                 28014     14272.46    per second
+c decisions:                 38947     19842.56    per second
+c eliminated:                 1880        13.67 %  of all variables
+c fixed:                        44         0.32 %  of all variables
+c learned:                   27428        97.91 %  per conflict
+c learned_lits:            1893323       100.00 %  learned literals
+c minimized:                     0         0.00 %  learned literals
+c shrunken:                 994548        52.53 %  learned literals
+c minishrunken:             133066         7.03 %  learned literals
+c otfs:                         34         0.12 %  of conflict
+c propagations:            7739826         3.94 M  per second
+c reduced:                   17427        62.21 %  per conflict
+c rephased:                      7      4002.00    interval
+c restarts:                    124       225.92    interval
+c stabilizing:                   2        35.70 %  of conflicts
+c subsumed:                   5177         1.71 %  of all clauses
+c strengthened:                236         0.08 %  of all clauses
+c trail reuses:                  0         0.00 %  of incremental calls
+c walked:                        1     28014.00    interval
+c weakened:                  13674         2.84    average size
+c 
+c seconds are measured in process time for solving
+c 
+c --- [ resources ] ----------------------------------------------------------
+c 
+c total process time since initialization:         2.01    seconds
+c total real time since initialization:            2.02    seconds
+c maximum resident set size of process:       173632.00    MB
+c 
+c raising signal 2 (SIGINT)

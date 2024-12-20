@@ -84,6 +84,7 @@ pii var_arr(int n, int k) {
 }
 //first argument: file name. 
 //second argument: n
+//third argument: txt file to output solution to
 int main(int argc, char* argv[]) {
     
     // Check if a filename was provided
@@ -121,13 +122,23 @@ int main(int argc, char* argv[]) {
         for (int j = 0; j < n; j++) {
             if (numbers[i*n + j] > 0) {
                 vec.push_back(var_arr(n,numbers[i*n + j])); //only store number if it is a dot
-                cout << "1 "; 
+                cout << "o "; 
             } else {
-                cout << "0 ";
+                cout << ". ";
             }
         }
         cout << endl;
     }
+
+    ofstream txt(argv[3]);
+
+    // Outputs the solution to argv[3], with y-coordinates in order of x-coordinates 
+    sort(vec.begin(), vec.end());
+
+    for (int i = 0; i < vec.size(); ++i) {
+        txt << vec[i].second+1 << " ";
+    }
+    txt << "\n";
 
     if (!isPermutationArray(vec,n)){
         cout << "input is not a costas array: fails permutation array test" << endl;

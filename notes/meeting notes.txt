@@ -1,0 +1,31 @@
+complement: pattern if objective is to select
+m solutions and n pixels, want all n pixels to be empty in all m solutions, maximizing m*n
+for m = 200, n = 0. But maybe you can have 10 pixels that are empty in 100 solutions. Quality is 1000 = 10*100.
+Maybe you can have 100 pixels that are empty in 10 solutions. Where does the optimal lie? 
+Want to maximize how many things you can make empty. Obviously if m=1, all but 24 solutions are empty. 
+If m = 2, probably a lot of overlap. 
+Want to set as much things empty as possible and also have set of solutions as big as possible. 
+Best thing is to say what is empty. If you fix something, can quickly get stuck bc might not be a solution.
+But if you make quite a bit false, still a lot of flexibility. How to maximize the things you turn off?
+There is also the number of dots to turn off, and there is also the position. 
+How many solutions if you make center square except for the diagonal empty?
+Idea: turn off everything of frequency 2, frequency 3, etc. 
+
+Similar experiment to turn off infrequent vectors. Easy to encode in binary and order encodings. 
+
+Look into patterns in some of the 24s, in that half the points depend on the other half. 
+Look at symmetries in 24 solutions, is it symmetric for say n=26? Maybe we can find a symmetric solution 
+for n=34 and cut off a couple points.
+solution 9
+Enforce symmetry with binary clauses: shift up by half, reflect over 10. Then looking for fewer points. 
+For 32, could reduce space to 18 points. 
+Look at others to see other kinds of symmetry. Typically need to take 4 points out, few where you took out 1-2 points.
+x_{i, j} \/ not(x_{21-i, j+12})
+not(x_{i, j}) \/ x_{19-i, j+11}
+should be satisfiable
+0 \leq i \leq 19
+1 \leq j \leq 11
+
+Generally:
+x_{i,j} \/ not(x_{2k-i, j+N/2})
+not(x_{i,j}) \/ x_{2k-i, j+N/2}
